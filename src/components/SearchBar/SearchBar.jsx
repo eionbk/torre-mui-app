@@ -23,7 +23,7 @@ const handleClick = async (e) => {
 
     return (
         <>
-        <img src="https://torre-media.s3-us-west-2.amazonaws.com/subtorres/Gig/torre.png"/>
+        <img src="https://torre-media.s3-us-west-2.amazonaws.com/subtorres/Gig/torre.png" alt="logo"/>
         <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}

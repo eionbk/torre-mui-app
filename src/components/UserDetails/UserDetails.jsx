@@ -58,7 +58,7 @@ const experticeSection = (skillList, expertice) =>{
         </AccordionSummary>
         <AccordionDetails>
                 {skillList.map(skill => <Item key={skill.name} className={expertice} elevation={15}>
-                  {skill.name+" - "+ "Recomendations: "+ skill.recommendations+" - "+"Weight: "+ skill.weight}
+                  {skill.name+" - Recomendations: "+ skill.recommendations+" - Weight: "+ skill.weight}
                 </Item>)}
         </AccordionDetails>
         </Accordion>

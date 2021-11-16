@@ -8,11 +8,23 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-
+import NotFound from '../NotFound/NotFound';
+import Grid from '@mui/material/Grid';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { cleanUser } from "../../Redux/Actions";
 
 function UserDetails() {
     const user = useSelector(state => state.User)
     console.log(user?.strengths);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        
+        return () => {
+            dispatch(cleanUser());
+        }
+    }, [dispatch])
   
     const userSKills = {
         novice: user?.strengths?.filter(skill => skill.proficiency === "novice"),
@@ -44,8 +56,8 @@ const experticeSection = (skillList, expertice) =>{
             <Typography>{expertice}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-                {skillList.map(skill => <Item key={expertice+skill.name} elevation={expertice.length}>
-                  {skill.name}
+                {skillList.map(skill => <Item key={expertice+skill.name} elevation={15}>
+                  {skill.name+" - "+ "Recomendations: "+ skill.recommendations+" - "+"Weight: "+ skill.weight}
                 </Item>)}
         </AccordionDetails>
         </Accordion>
@@ -53,40 +65,52 @@ const experticeSection = (skillList, expertice) =>{
         </div>
     )
 }
+
         const showUserDetails = () => {
-            <div>
-            <ThemeProvider theme={darkTheme}>
+            return (<div>
+                <ThemeProvider theme={darkTheme}>
+                
+                <Box
+                  sx={{
+                    p: 2,
+                    bgcolor: 'background.default',
+                    display: 'grid',
+                    gridTemplateColumns: { md: '1fr' },
+                    gap: 2,
+                  }}
+                  >
+                  <Grid
+                  container
+                  spacing={0}
+                  direction="column"
+                  placeItems="center"
+                  justifyContent="center"
+                //   style={{ minHeight: '70vh' }}
+                >
+                    {user?.picture && 
+                    <Avatar alt={user?.name}
+                        sx={{ width: "100%", height: "100%" }}
+                        src={user?.picture} />}
+                
+                </Grid>
+                <Typography>{user?.name}</Typography>
+                <Typography>Skills</Typography>
+                {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
+                {userSKills.proficient && experticeSection(userSKills.proficient, "Proficient")}
+                {userSKills.novice && experticeSection(userSKills.novice, "Novice")}
+                {userSKills.noExperience && experticeSection(userSKills.noExperience, "No Experience but interested")}
+                </Box>
+                </ThemeProvider>
+            </div>)
             
-            <Box
-              sx={{
-                p: 2,
-                bgcolor: 'background.default',
-                display: 'grid',
-                gridTemplateColumns: { md: '1fr' },
-                gap: 2,
-              }}
-            >
-                {user?.picture && 
-                <Avatar alt={user?.name}
-                    sx={{ width: "50%", height: "100%" }}
-                    src={user?.picture} />}
-            <h1>{user?.name}</h1>
-           
-            <h2>Strengths</h2>
-            {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
-            {userSKills.proficient && experticeSection(userSKills.proficient, "Proficient")}
-            {userSKills.novice && experticeSection(userSKills.novice, "Novice")}
-            {userSKills.noExperience && experticeSection(userSKills.noExperience, "No Experience but interested")}
-            </Box>
-            </ThemeProvider>
-        </div>
-        }
+        };
         
+        console.log ( Object.keys(user).length )
 
     return (
-        <>
-        {user.length ? showUserDetails() : <div>No user with that User Name</div>}
-        </>
+        
+        Object.keys(user).length ? showUserDetails() : <NotFound />
+        
     )
 }
 

@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 function Landing() {
 const dispatch = useDispatch()
 
-    const handleClick = () => {
-        dispatch(allSkills("gamma1994"))
+    const handleClick = async () => {
+        await dispatch(allSkills("gamma1994"))
     }
 
     return (

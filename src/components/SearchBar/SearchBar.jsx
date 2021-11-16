@@ -31,7 +31,7 @@ const handleClick = async (e) => {
             
             <InputBase
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="User Name"
+                placeholder="User"
                 inputProps={{ 'aria-label': 'search google maps' }}
                 onChange={(e) => setsearchValue(e.target.value)}
             />

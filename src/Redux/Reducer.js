@@ -15,6 +15,7 @@ export const torreReducer = (state = initialState, { type, payload })=> {
     const torreReducer = {
            ALL_SKILLS: "User",
            SEARCH_PEOPLE: "searchResults",
+           CLEAN_USER: "User",
 
             
     }

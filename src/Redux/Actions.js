@@ -25,9 +25,9 @@ export const allSkills = (username) => {
 }
 
 
-export const searchPeople = (term) => { 
+export const searchPeople = (values) => { 
     return dispatch => {
-        return axios.post(urls.SEARCH,{term})
+        return axios.post(urls.SEARCH,values)
             .then(response => {
                 console.log(response.data);
                 dispatch({
@@ -38,5 +38,14 @@ export const searchPeople = (term) => {
             .catch(error => {
                 console.log(error)
             })
+    }
+}
+
+export const cleanUser = () => {
+    return dispatch => {
+        dispatch({
+            type: 'CLEAN_USER',
+            payload: {}
+        })
     }
 }

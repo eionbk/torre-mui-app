@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const urls = {
-    SKILLS: 'http://localhost:3001/skills', 
-    SEARCH: 'http://localhost:3001/search', 
+    SKILLS: 'https://api-torre-irios.herokuapp.com/skills', 
+    SEARCH: 'https://api-torre-irios.herokuapp.com/search', 
 }
 
 export const ALL_SKILLS = 'ALL_SKILLS'

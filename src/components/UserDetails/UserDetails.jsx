@@ -17,7 +17,7 @@ import { cleanUser } from "../../Redux/Actions";
 
 function UserDetails() {
     const user = useSelector(state => state.User)
-    console.log(user?.strengths);
+    
     const dispatch = useDispatch();
 
     useEffect(() => {

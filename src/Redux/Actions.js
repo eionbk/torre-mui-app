@@ -29,7 +29,7 @@ export const searchPeople = (values) => {
     return dispatch => {
         return axios.post(urls.SEARCH,values)
             .then(response => {
-                console.log(response.data);
+                git 
                 dispatch({
                     type: 'SEARCH_PEOPLE',
                     payload: response.data

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const urls = {
-    SKILLS: 'https://api-torre-irios.herokuapp.com/skills', //RUTA PARA OBTENER LAS RECETAS
-   
+    SKILLS: 'http://localhost:3001/skills', 
+    SEARCH: 'http://localhost:3001/search', 
 }
 
 export const ALL_SKILLS = 'ALL_SKILLS'
@@ -15,6 +15,23 @@ export const allSkills = (username) => {
             .then(response => {
                 dispatch({
                     type: ALL_SKILLS,
+                    payload: response.data
+                })
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+}
+
+
+export const searchPeople = (term) => { 
+    return dispatch => {
+        return axios.post(urls.SEARCH,{term})
+            .then(response => {
+                console.log(response.data);
+                dispatch({
+                    type: 'SEARCH_PEOPLE',
                     payload: response.data
                 })
             })

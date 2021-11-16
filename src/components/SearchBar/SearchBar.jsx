@@ -1,22 +1,25 @@
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
-import SearchIcon from '@mui/icons-material/Search';
+import LoginIcon from '@mui/icons-material/Login';
 import { useDispatch } from 'react-redux';
-import {searchPeople} from '../../Redux/Actions';
+import {allSkills} from '../../Redux/Actions';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 function SearchBar() {
 const [searchValue, setsearchValue] = useState("");
 const dispatch = useDispatch();
+const navigate = useNavigate(); 
 
 
-const handleClick = (e) => {
+const handleClick = async (e) => {
     e.preventDefault();
-    dispatch(searchPeople(searchValue));
-    };
-    console.log(searchValue);
+    await dispatch(allSkills(searchValue));
+    navigate('/Details')
+    
+}
 
     return (
         <Paper
@@ -35,7 +38,7 @@ const handleClick = (e) => {
             sx={{ p: '10px' }} 
             aria-label="search"
             onClick={handleClick}>
-                <SearchIcon />
+                <LoginIcon />
             </IconButton>
 
         </Paper>

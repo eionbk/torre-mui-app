@@ -16,7 +16,7 @@ export const torreReducer = (state = initialState, { type, payload })=> {
             
     }
 
-    return torreReducer.hasOwnProperty(type) ? //WE HAVE THE TYPO ON THE INDEX ?
+    return torreReducer.hasOwnProperty(type) ? //WE HAVE THE TYPE ON THE INDEX ?
         changeState(torreReducer[type], payload): // TRUE: UPDATE STATE
         state; //FALSE: RETURN THE STATE
 }

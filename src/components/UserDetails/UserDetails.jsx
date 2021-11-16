@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
 
 
 function UserDetails() {
@@ -34,16 +35,17 @@ const experticeSection = (skillList, expertice) =>{
     return(
         <div className="expertise-section">
         <h3>{expertice}</h3>
+        
         <Accordion>
             <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-            <Typography>View More</Typography>
+            <Typography>Expand To view All</Typography>
         </AccordionSummary>
         <AccordionDetails>
-                {skillList.map(skill => <Item key={expertice} elevation={24}>
+                {skillList.map(skill => <Item key={expertice+skill.name} elevation={expertice.length}>
                   {skill.name}
                 </Item>)}
         </AccordionDetails>
@@ -55,15 +57,28 @@ const experticeSection = (skillList, expertice) =>{
 
     return (
         <div>
+            <ThemeProvider theme={darkTheme}>
             {user.person?.picture && 
                 <Avatar alt={user.person?.name}
                     sx={{ width: "30%", height: "30%" }}
                     src={user.person.picture} />}
             <h1>{user.person?.name}</h1>
-            
+            <Box
+              sx={{
+                p: 2,
+                bgcolor: 'background.default',
+                display: 'grid',
+                gridTemplateColumns: { md: '1fr' },
+                gap: 2,
+              }}
+            >
+           
+            <h2>Strengths</h2>
             {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
             {userSKills.proficient && experticeSection(userSKills.proficient, "Proficient")}
             {userSKills.novice && experticeSection(userSKills.novice, "Novice")}
+            </Box>
+            </ThemeProvider>
         </div>
     )
 }

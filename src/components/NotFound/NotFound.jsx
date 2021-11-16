@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import CircularProgress from '@mui/material/CircularProgress';
 function NotFound() {
     const navigate = useNavigate(); 
 
@@ -11,7 +12,7 @@ function NotFound() {
 
     return (
         <div>
-            <div>No user with that User Name</div>
+            <CircularProgress />
             <Button variant="contained" color="primary" onClick={handleClick}>Go Back</Button>
         </div>
     )

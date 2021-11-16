@@ -9,9 +9,8 @@ export const ALL_SKILLS = 'ALL_SKILLS'
 
 
 export const allSkills = (username) => {
-    return dispatch => {
-        console.log('allSkills '+ username);
-        return axios.get(urls.SKILLS+'/'+username)
+    return async dispatch => {
+        return await axios.get(urls.SKILLS+'/'+username)
             .then(response => {
                 dispatch({
                     type: ALL_SKILLS,
@@ -26,10 +25,9 @@ export const allSkills = (username) => {
 
 
 export const searchPeople = (values) => { 
-    return dispatch => {
-        return axios.post(urls.SEARCH,values)
-            .then(response => {
-                git 
+    return async dispatch =>  {
+        return await axios.post(urls.SEARCH,values)
+            .then(response => { 
                 dispatch({
                     type: 'SEARCH_PEOPLE',
                     payload: response.data

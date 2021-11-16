@@ -109,7 +109,7 @@ const experticeSection = (skillList, expertice) =>{
             
         };
         
-        console.log ( Object.keys(user).length )
+        
 
     return (
         

@@ -22,14 +22,16 @@ const handleClick = async (e) => {
 }
 
     return (
+        <>
+        <img src="https://torre-media.s3-us-west-2.amazonaws.com/subtorres/Gig/torre.png"/>
         <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}
         >
-
+            
             <InputBase
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Search for People or skills"
+                placeholder="User Name"
                 inputProps={{ 'aria-label': 'search google maps' }}
                 onChange={(e) => setsearchValue(e.target.value)}
             />
@@ -42,6 +44,7 @@ const handleClick = async (e) => {
             </IconButton>
 
         </Paper>
+        </>
     )
 }
 

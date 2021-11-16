@@ -35,15 +35,13 @@ function UserDetails() {
 const experticeSection = (skillList, expertice) =>{
     return(
         <div className="expertise-section">
-        <h3>{expertice}</h3>
-        
         <Accordion>
             <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-            <Typography>Expand To view All</Typography>
+            <Typography>{expertice}</Typography>
         </AccordionSummary>
         <AccordionDetails>
                 {skillList.map(skill => <Item key={expertice+skill.name} elevation={expertice.length}>
@@ -55,15 +53,10 @@ const experticeSection = (skillList, expertice) =>{
         </div>
     )
 }
-
-    return (
-        <div>
+        const showUserDetails = () => {
+            <div>
             <ThemeProvider theme={darkTheme}>
-            {user?.picture && 
-                <Avatar alt={user?.name}
-                    sx={{ width: "30%", height: "30%" }}
-                    src={user?.picture} />}
-            <h1>{user?.name}</h1>
+            
             <Box
               sx={{
                 p: 2,
@@ -73,6 +66,11 @@ const experticeSection = (skillList, expertice) =>{
                 gap: 2,
               }}
             >
+                {user?.picture && 
+                <Avatar alt={user?.name}
+                    sx={{ width: "50%", height: "100%" }}
+                    src={user?.picture} />}
+            <h1>{user?.name}</h1>
            
             <h2>Strengths</h2>
             {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
@@ -82,6 +80,13 @@ const experticeSection = (skillList, expertice) =>{
             </Box>
             </ThemeProvider>
         </div>
+        }
+        
+
+    return (
+        <>
+        {user.length ? showUserDetails() : <div>No user with that User Name</div>}
+        </>
     )
 }
 

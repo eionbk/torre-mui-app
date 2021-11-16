@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { cleanUser } from "../../Redux/Actions";
 
+
 function UserDetails() {
     const user = useSelector(state => state.User)
     console.log(user?.strengths);
@@ -85,20 +86,23 @@ const experticeSection = (skillList, expertice) =>{
                   direction="column"
                   placeItems="center"
                   justifyContent="center"
-                //   style={{ minHeight: '70vh' }}
+                  style={{ minHeight: '70vh' }}
                 >
                     {user?.picture && 
                     <Avatar alt={user?.name}
-                        sx={{ width: "100%", height: "100%" }}
+                        sx={{  width: darkTheme.spacing(40),
+                            height: darkTheme.spacing(40), }}
+                        style={{alignSelf: 'center'}}
                         src={user?.picture} />}
                 
-                </Grid>
+                
                 <Typography>{user?.name}</Typography>
-                <Typography>Skills</Typography>
+                <h3>Skills</h3>
                 {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
                 {userSKills.proficient && experticeSection(userSKills.proficient, "Proficient")}
                 {userSKills.novice && experticeSection(userSKills.novice, "Novice")}
                 {userSKills.noExperience && experticeSection(userSKills.noExperience, "No Experience but interested")}
+                </Grid>
                 </Box>
                 </ThemeProvider>
             </div>)

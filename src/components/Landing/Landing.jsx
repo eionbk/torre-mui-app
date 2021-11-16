@@ -14,9 +14,9 @@ const dispatch = useDispatch()
 
     return (
         <div>
-            Welcome to Torre, press the button to start!    
+            <h2>Welcome to Torre, loog-in with your user name!</h2>  
             <Link to='/Details'>
-            <Button variant="contained" color="primary" onClick={handleClick} >CLICK ME</Button>      
+            <Button variant="contained" color="primary" onClick={handleClick} >Or click the button to check my Skills</Button>      
             </Link>  
         </div>
     )

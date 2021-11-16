@@ -17,7 +17,8 @@ function UserDetails() {
     const userSKills = {
         novice: user?.strengths?.filter(skill => skill.proficiency === "novice"),
         proficient: user?.strengths?.filter(skill => skill.proficiency === "proficient"),
-        expert: user?.strengths?.filter(skill => skill.proficiency === "expert")
+        expert: user?.strengths?.filter(skill => skill.proficiency === "expert"),
+        noExperience: user?.strengths?.filter(skill => skill.proficiency === "no-experience-interested")
     }
     const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
@@ -58,11 +59,11 @@ const experticeSection = (skillList, expertice) =>{
     return (
         <div>
             <ThemeProvider theme={darkTheme}>
-            {user.person?.picture && 
-                <Avatar alt={user.person?.name}
+            {user?.picture && 
+                <Avatar alt={user?.name}
                     sx={{ width: "30%", height: "30%" }}
-                    src={user.person.picture} />}
-            <h1>{user.person?.name}</h1>
+                    src={user?.picture} />}
+            <h1>{user?.name}</h1>
             <Box
               sx={{
                 p: 2,
@@ -77,6 +78,7 @@ const experticeSection = (skillList, expertice) =>{
             {userSKills.expert && experticeSection(userSKills.expert, "Expert")}
             {userSKills.proficient && experticeSection(userSKills.proficient, "Proficient")}
             {userSKills.novice && experticeSection(userSKills.novice, "Novice")}
+            {userSKills.noExperience && experticeSection(userSKills.noExperience, "No Experience but interested")}
             </Box>
             </ThemeProvider>
         </div>
